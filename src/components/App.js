@@ -7,9 +7,9 @@ function App() {
   return (
     <div className='page'>
       <div className='page__container'>
-        <Header />
-        <Main />
-        <Footer />
+        <Header/>
+        <Main/>
+        <Footer/>
       </div>
     </div>
   );
