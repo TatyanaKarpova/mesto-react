@@ -32,4 +32,4 @@
 
 **GitHub Pages**
 
-Мой проект на [GitHub Pages](https://tatyanakarpova.github.io/mesto/).
+Мой проект на [GitHub Pages](https://tatyanakarpova.github.io/mesto-react/).
