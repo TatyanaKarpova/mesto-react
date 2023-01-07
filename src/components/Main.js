@@ -1,16 +1,16 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import {api} from '../utils/api';
 import Card from './Card';
 
-function Main(props) {
+function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
 
-    const [userName, setUserName] = React.useState();
-    const [userDescription, setUserDescription] = React.useState();
-    const [userAvatar, setUserAvatar] = React.useState();
+    const [userName, setUserName] = useState('');
+    const [userDescription, setUserDescription] = useState('');
+    const [userAvatar, setUserAvatar] = useState('');
 
-    const [cards, setCards] = React.useState([]);
+    const [cards, setCards] = useState([]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         api
           .getUserProfileInfo()
           .then((res) => {
@@ -19,9 +19,6 @@ function Main(props) {
             setUserAvatar(res.avatar);
           })
           .catch((err) => console.log(err));
-    }, []);
-
-    React.useEffect(() => {
         api
           .getInitialCards()
           .then((res) => {
@@ -33,7 +30,7 @@ function Main(props) {
     return (
         <main className='content'>
             <section className='profile section content__section'>
-                <div className='profile__avatar-container' onClick={props.onEditAvatar}>
+                <div className='profile__avatar-container' onClick={onEditAvatar}>
                     <img 
                         className='profile__avatar' 
                         src={`${userAvatar}`} 
@@ -48,14 +45,14 @@ function Main(props) {
                         className='profile__edit-button' 
                         type='button' 
                         aria-label='Редактировать профиль' 
-                        onClick={props.onEditProfile}
+                        onClick={onEditProfile}
                     ></button>
                 </div>
                 <button 
                     className='profile__add-button' 
                     type='button' 
                     aria-label='Добавить новую карточку' 
-                    onClick={props.onAddPlace}
+                    onClick={onAddPlace}
                 ></button>
             </section>
             <section className='elements section content__section'>
@@ -64,7 +61,7 @@ function Main(props) {
                         <Card
                         card = {card}
                         key = {card._id}
-                        onCardClick={props.onCardClick}
+                        onCardClick={onCardClick}
                         />
                     ))}
                 </div>
