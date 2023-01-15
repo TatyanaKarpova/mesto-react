@@ -1,11 +1,15 @@
 import React from 'react';
 
-function PopupWithForm({name, isOpen, title, children, buttonName, onClose}) {
+function PopupWithForm({name, isOpen, title, children, buttonName, onClose, onSubmit}) {
     return (
         <div className={`popup ${name} ${isOpen && "popup_opened"}`}>
             <div className='popup__container' name={name}>
                 <h2 className='popup__heading'>{title}</h2>
-                <form name={`popup-form-${name}`} className='popup__form' noValidate>
+                <form 
+                    name={`popup-form-${name}`} 
+                    className='popup__form' 
+                    onSubmit={onSubmit} 
+                    noValidate>
                     {children}
                     <button type='submit' className='popup__button'>{buttonName}</button>
                 </form>
