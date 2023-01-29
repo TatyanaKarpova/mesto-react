@@ -12,12 +12,12 @@ import ConfirmDeleteCardPopup from './ConfirmDeleteCardPopup';
 
 function App () {
 
-  const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
-  const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
-  const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
-  const [isShowFullImagePopupOpen, setShowFullImagePopupOpen] = useState(false);
-  const [isConfirmDeleteCardPopupOpen, setConfirmDeleteCardPopup] = useState(false);
-  const [isRenderLoading, setRenderLoading] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isShowFullImagePopupOpen, setIsShowFullImagePopupOpen] = useState(false);
+  const [isConfirmDeleteCardPopupOpen, setIsConfirmDeleteCardPopup] = useState(false);
+  const [isRenderLoading, setIsRenderLoading] = useState(false);
 
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
@@ -30,9 +30,6 @@ function App () {
         setCurrentUser(res);
       })
       .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
     api
       .getInitialCards()
       .then((res) => {
@@ -42,7 +39,7 @@ function App () {
   }, []);
 
   function handleUpdateUser (newProfileInfo) {
-    setRenderLoading(true);
+    setIsRenderLoading(true);
 
     api
       .editProfileInfo(newProfileInfo)
@@ -51,11 +48,11 @@ function App () {
         closeAllPopups();
       })
       .catch((err) => console.log(err))
-      .finally(() => setRenderLoading(false));
+      .finally(() => setIsRenderLoading(false));
   };
 
   function handleUpdateAvatar (newAvatar) {
-    setRenderLoading(true);
+    setIsRenderLoading(true);
 
     api
       .updateAvatar(newAvatar)
@@ -64,11 +61,11 @@ function App () {
         closeAllPopups();
       })
       .catch((err) => console.log(err))
-      .finally(() => setRenderLoading(false));
+      .finally(() => setIsRenderLoading(false));
   };
 
   function handleAddPlaceSubmit (newPlace) {
-    setRenderLoading(true);
+    setIsRenderLoading(true);
 
     api
       .addNewCards(newPlace.name, newPlace.link)
@@ -77,38 +74,38 @@ function App () {
         closeAllPopups();
       })
       .catch((err) => console.log(err))
-      .finally(() => setRenderLoading(false));
+      .finally(() => setIsRenderLoading(false));
   };
  
   function handleEditProfileClick() {
-    setEditProfilePopupOpen(true);
+    setIsEditProfilePopupOpen(true);
   };
 
   function handleAddPlaceClick () {
-    setAddPlacePopupOpen(true);
+    setIsAddPlacePopupOpen(true);
   };
 
   function handleEditAvatarClick () {
-    setEditAvatarPopupOpen(true);
+    setIsEditAvatarPopupOpen(true);
   };
 
   function handleCardClick (card) {
-    setShowFullImagePopupOpen(true);
+    setIsShowFullImagePopupOpen(true);
     setSelectedCard(card);
   };
 
   function handleDeleteCardClick (card) {
-    setConfirmDeleteCardPopup(true);
+    setIsConfirmDeleteCardPopup(true);
     setSelectedCard(card);
   };
 
   function closeAllPopups() {
-    setEditProfilePopupOpen(false);
-    setAddPlacePopupOpen(false);
-    setEditAvatarPopupOpen(false);
-    setShowFullImagePopupOpen(false);
-    setConfirmDeleteCardPopup(false);
-    setRenderLoading(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsShowFullImagePopupOpen(false);
+    setIsConfirmDeleteCardPopup(false);
+    setIsRenderLoading(false);
   };
 
   function handleCardLike (card) {
@@ -123,7 +120,7 @@ function App () {
   };
 
   function handleCardDelete (card) {
-    setRenderLoading(true);
+    setIsRenderLoading(true);
 
     api
       .deleteCard(card._id)
@@ -132,7 +129,7 @@ function App () {
         closeAllPopups();
     })
       .catch((err) => console.log(err))
-      .finally(() => setRenderLoading(false));
+      .finally(() => setIsRenderLoading(false));
   };
 
   return (

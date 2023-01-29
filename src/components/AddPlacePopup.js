@@ -3,21 +3,21 @@ import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup ({isOpen, onClose, onAddPlace, isRenderLoading}) {
 
-    const [placeName, setplaceName] = useState('');
-    const [placeLink, setplaceLink] = useState('');
+    const [placeName, setPlaceName] = useState('');
+    const [placeLink, setPlaceLink] = useState('');
 
 
     useEffect(() => {
-        setplaceName('');
-        setplaceLink('');
+      setPlaceName('');
+      setPlaceLink('');
     }, [isOpen]);
 
     function handlePlaceNameChange(evt) {
-        setplaceName(evt.target.value);
+      setPlaceName(evt.target.value);
     };
 
     function handlePlaceLinkChange(evt) {
-        setplaceLink(evt.target.value);
+      setPlaceLink(evt.target.value);
     };
 
     function handleSubmit(evt) {
