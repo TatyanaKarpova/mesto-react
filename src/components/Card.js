@@ -25,7 +25,7 @@ function Card ({card, onCardClick, onCardLike, onCardDelete}) {
 
     function handleDeleteClick () {
         onCardDelete(card);
-    }
+    };
     
     return (
         <article className='element'>
@@ -48,6 +48,6 @@ function Card ({card, onCardClick, onCardLike, onCardDelete}) {
             <button className={cardDeleteButtonClassName} onClick={handleDeleteClick}></button>
         </article>
     )
-}
+};
 
 export default Card;

@@ -8,7 +8,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
-    width: 100%;
+    width: 358px;
     height: 50px;
     border: 0;
     color: white;
@@ -28,5 +28,6 @@
         height: 46px;
         font-size: 14px;
         line-height: 17px;
+        width: 238px;
     }
 }
